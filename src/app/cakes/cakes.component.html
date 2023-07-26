@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-4">
+        <select class="form-select" aria-label="Default select example" (click)="onSortChange($event)">
+            <option value="">--</option>
+            <option value="{{ingredient}}" *ngFor="let ingredient of ingredients">{{ingredient}}</option>
+          </select>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-4" *ngFor="let cake of cakes" [routerLink]="['/cakes', cake._id]">
+        <img src="http://localhost:3000/image/cakes/{{cake._id}}.jpg" alt="" width="100%">
+        <h4>{{cake.name}}</h4>
+        <p>{{cake.ingredients}}</p>
+    </div>
+</div>

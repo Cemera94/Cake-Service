@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+    <div class="form-group">
+      <label for="exampleInputEmail1">First Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name" formControlName="firstName">
+      <small *ngIf="firstName?.touched && firstName?.errors?.['required']" class="text-danger">Required</small>
+    </div><br>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input  formControlName="lastName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter last name">
+      <small *ngIf="lastName?.touched && lastName?.errors?.['required']" class="text-danger">Required</small>
+      </div><br>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email Address</label>
+        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small *ngIf="email?.touched && email?.errors?.['required']" class="text-danger">Required</small>
+      <small *ngIf="email?.touched && email?.errors?.['email']" class="text-danger">Not good format of email</small>
+      </div><br>
+    <button type="submit" class="btn btn-primary" (click)="onEditClicked()" *ngIf="!edit">Edit</button>
+    <div class="editing" *ngIf="edit">
+        <button type="submit" class="btn btn-primary" (click)="onCancelClicked()">Cancel</button>
+        <button type="submit" class="btn btn-primary" (click)="onOkClicked()" [disabled]="form.invalid">OK</button>
+    </div>
+  </form>
